@@ -2,13 +2,9 @@
 
 def compareTriplets a, b
   a_points, b_points = 0, 0
-
   a.size.times do |idx|
-    if a[idx] > b[idx]
-      a_points += 1
-    elsif a[idx] < b[idx]
-      b_points += 1
-    end
+    a_points += 1 if a[idx] > b[idx]
+    b_points += 1 if a[idx] < b[idx]
   end
 
   [a_points, b_points]
@@ -38,7 +34,29 @@ def diagonalDiference mtx
     d1 += mtx[idx][idx]
     d2 += mtx[idx][idx2 -= 1]
   end
-  d1 > d2 ? d1 - d2 : d2 - d1
+  (d1 - d2).abs
 end
 
 puts diagonalDiference mtx
+
+def staircase(n)
+  n.times do |i|
+    spaces = hashes = ""
+    (n - i - 1).times { spaces += " " }
+    (i + 1).times { hashes += "#" }
+    puts "#{spaces}#{hashes}"
+  end
+end
+
+staircase 6
+
+def miniMaxSum(arr)
+  max = min = 0
+  arr.map do |n|
+    max += n if n != arr.min
+    min += n if n != arr.max
+  end
+  printf "%d %d", min, max
+end
+
+miniMaxSum [1, 2, 3, 4, 5]
