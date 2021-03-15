@@ -11,5 +11,5 @@ int main(void) {
     }
 
     if (size == 0) printf("%d\n", n);
-    else printf("%f", (float) total / size);
+    else printf("%.2f", (float) total / size);
 }
